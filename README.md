@@ -2,6 +2,7 @@
 Alan Framework is a post-exploitation framework useful during red-team activities. 
 
 You can download the binary from: <a href="https://github.com/enkomio/AlanFramework/releases/latest">https://github.com/enkomio/AlanFramework/releases/latest</a>
+v2.0 Releasing date: 27/03/2021
 
 Example videos: 
 
