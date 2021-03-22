@@ -17,13 +17,13 @@ If you find my tool useful, please consider to <a href="https://github.com/spons
 
 # Changelog
 ### 2.0.0 - 20/03/2021
-* Implemented agent `detach` command to temporary exit from a current joined agent
+* Implemented agent `detach` command to temporary exit from a joined agent
 * Implemented shell `detach` command to temporary exit from a command shell
 * Implemented `listeners` command to list the available listeners
 * Implemented HTTPS listener to communicatewith the agent via TLS
 * Implemented `get-config` command to download the current agent configuration
 * Implemented `update` command to update the agent configuration
-* Support from Windows7
+* Windows7 is now supported
 
 ### 1.0.0 - 22/02/2021
 * First Release
