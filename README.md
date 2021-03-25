@@ -7,7 +7,7 @@ Next releasing date (v2.0): XX/04/2021 (currently available only to sponsored us
 
 You can download the binary from: <a href="https://github.com/enkomio/AlanFramework/releases/latest">https://github.com/enkomio/AlanFramework/releases/latest</a>
 
-## Example videos: 
+## Videos: 
 
 * <a href="https://www.youtube.com/watch?v=oLXYUCX7dVY">Update agent profile at runtime</a>
 * <a href="https://www.youtube.com/watch?v=dgEBEAfEseY">Introduction</a>
