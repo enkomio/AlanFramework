@@ -15,7 +15,7 @@ For more information on its usage please read the <a href="https://github.com/en
 <a href="https://www.youtube.com/watch?v=dgEBEAfEseY"><img src="https://raw.githubusercontent.com/enkomio/AlanFramework/main/images/Alan%202.0.png"></a>
 
 # Changelog
-### 2.0.0 - 20/03/2021
+### 2.0.500.23 - 20/03/2021
 * Implemented agent `detach` command to temporary exit from a joined agent
 * Implemented shell `detach` command to temporary exit from a command shell
 * Implemented `listeners` command to list the available listeners
