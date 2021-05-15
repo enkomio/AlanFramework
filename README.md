@@ -10,9 +10,8 @@ You can download the binary from: <a href="https://github.com/enkomio/AlanFramew
 * <a href="https://www.youtube.com/watch?v=oLXYUCX7dVY">Update agent profile at runtime</a>
 * <a href="https://www.youtube.com/watch?v=dgEBEAfEseY">Introduction</a>
 
+## Documentation:
 For more information on its usage please read the <a href="https://github.com/enkomio/AlanFramework/blob/main/doc/Alan%20Documentation%20-%20v3.0.502.19.pdf">documentation</a>.
-
-<a href="https://www.youtube.com/watch?v=dgEBEAfEseY"><img src="https://raw.githubusercontent.com/enkomio/AlanFramework/main/images/Alan%202.0.png"></a>
 
 # Changelog
 ### 3.0.0 - 15/05/2021
