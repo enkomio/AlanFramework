@@ -25,7 +25,7 @@ For more information on its usage please read the <a href="https://github.com/en
 * Implemented `SuccessRequest` as HTTP server response option to customize the http/s listener response
 * Implemented `ErrorRequest` to customize the http/s listener response for bad requests
 * Implemented `prepend` and `append` as HTTP server request option to specify in the agent prof
-* 
+
 ### 2.0.500.23 - 20/03/2021
 * Implemented agent `detach` command to temporary exit from a joined agent
 * Implemented shell `detach` command to temporary exit from a command shell
