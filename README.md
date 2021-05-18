@@ -13,6 +13,8 @@ You can download the binary from: <a href="https://github.com/enkomio/AlanFramew
 * <a href="https://www.youtube.com/watch?v=dgEBEAfEseY">Introduction</a>
 
 ## Documentation:
+Blog post: <a href="http://antonioparata.blogspot.com/2021/05/alan-post-exploitation-framework.html">http://antonioparata.blogspot.com/2021/05/alan-post-exploitation-framework.html</a>
+
 For more information on its usage please read the <a href="https://github.com/enkomio/AlanFramework/blob/main/doc/Alan%20Documentation%20-%20v3.0.502.19.pdf">documentation</a>.
 
 # Changelog
