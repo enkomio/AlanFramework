@@ -7,6 +7,10 @@ Alan Framework is a post-exploitation framework useful during red-team activitie
 
 You can download the binary from: <a href="https://github.com/enkomio/AlanFramework/releases/latest">https://github.com/enkomio/AlanFramework/releases/latest</a>
 
+## Download
+
+<a href="https://github.com/enkomio/AlanFramework/releases/latest">Download Alan Framework</a>
+
 ## Videos: 
 
 * <a href="https://www.youtube.com/watch?v=oLXYUCX7dVY">Update agent profile at runtime</a>
