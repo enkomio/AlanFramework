@@ -3,8 +3,6 @@ Alan Framework is a post-exploitation framework useful during red-team activitie
 
 **If you find my tool useful, please consider to <a href="https://github.com/sponsors/enkomio">sponsor me</a>. Sponsored users have access to early releases and non public content.**
 
-**Alan v3.0 is currently available to sponsored users only. I'll release it to everyone after a brief period (watch the project to be notified when I'll release it)**
-
 You can download the binary from: <a href="https://github.com/enkomio/AlanFramework/releases/latest">https://github.com/enkomio/AlanFramework/releases/latest</a>
 
 ## Download
