@@ -44,6 +44,7 @@ For more information on its usage please read the <a href="https://github.com/en
 - Implemented `get-config` command to download the current agent configuration
 - Implemented `update` command to update the agent configuration
 - Windows7 is now supported
+```
 
 ### 1.0.0 - 22/02/2021
 ```markdown
