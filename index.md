@@ -19,9 +19,10 @@ Blog post: <a href="http://antonioparata.blogspot.com/2021/05/alan-post-exploita
 
 For more information on its usage please read the <a href="https://github.com/enkomio/AlanFramework/blob/main/doc/Alan%20Documentation%20-%20v3.0.502.19.pdf">documentation</a>.
 
-```markdown
-# Changelog
+## Changelog
+
 ### 3.0.0 - 15/05/2021
+```markdown
 - Renamed agent shell `quit` command to `exit`
 - Implemented agent migration via `migrate` command
 - Fixed error in retrieving OS version
@@ -32,8 +33,10 @@ For more information on its usage please read the <a href="https://github.com/en
 - Implemented `SuccessRequest` as HTTP server response option to customize the http/s listener response
 - Implemented `ErrorRequest` to customize the http/s listener response for bad requests
 - Implemented `prepend` and `append` as HTTP server request option to specify in the agent prof
+```
 
 ### 2.0.500.23 - 20/03/2021
+```markdown
 - Implemented agent `detach` command to temporary exit from a joined agent
 - Implemented shell `detach` command to temporary exit from a command shell
 - Implemented `listeners` command to list the available listeners
@@ -43,5 +46,6 @@ For more information on its usage please read the <a href="https://github.com/en
 - Windows7 is now supported
 
 ### 1.0.0 - 22/02/2021
+```markdown
 - First Release
 ```
