@@ -11,8 +11,10 @@ You can download the binary from: <a href="https://github.com/enkomio/AlanFramew
 
 ## Videos: 
 
-* <a href="https://www.youtube.com/watch?v=oLXYUCX7dVY">Update agent profile at runtime</a>
 * <a href="https://www.youtube.com/watch?v=dgEBEAfEseY">Introduction</a>
+* <a href="https://www.youtube.com/watch?v=oLXYUCX7dVY">Update agent profile at runtime</a>
+* <a href="https://www.youtube.com/watch?v=L-DVJO7u5Vw">A powerful command-shell and agent migration</a>
+
 
 ## Documentation:
 Blog post: <a href="http://antonioparata.blogspot.com/2021/05/alan-post-exploitation-framework.html">http://antonioparata.blogspot.com/2021/05/alan-post-exploitation-framework.html</a>
