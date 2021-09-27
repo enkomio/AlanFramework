@@ -14,9 +14,12 @@ You can download the binary from: <a href="https://github.com/enkomio/AlanFramew
 * <a href="https://www.youtube.com/watch?v=dgEBEAfEseY">Introduction</a>
 * <a href="https://www.youtube.com/watch?v=oLXYUCX7dVY">Update agent profile at runtime</a>
 * <a href="https://www.youtube.com/watch?v=L-DVJO7u5Vw">A powerful command-shell and agent migration</a>
+* <a href="https://www.youtube.com/watch?v=D8zDycuZHqg">Alan post-exploitation framework v4.0 demo</a>
 
 ## Documentation:
-Blog post: <a href="http://antonioparata.blogspot.com/2021/05/alan-post-exploitation-framework.html">http://antonioparata.blogspot.com/2021/05/alan-post-exploitation-framework.html</a>
+Blog posts
+* <a href="http://antonioparata.blogspot.com/2021/05/alan-post-exploitation-framework.html">Alan - A post exploitation framework</a>
+* <a href="http://antonioparata.blogspot.com/2021/09/alan-post-exploitation-framework-v40.html">Alan post-exploitation framework v4.0 released</a>
 
 For more information on its usage please read the <a href="https://github.com/enkomio/AlanFramework/blob/main/doc/Alan%20Documentation%20-%20v3.0.502.19.pdf">documentation</a>.
 
