@@ -15,15 +15,31 @@ You can download the binary from: <a href="https://github.com/enkomio/AlanFramew
 * <a href="https://www.youtube.com/watch?v=oLXYUCX7dVY">Update agent profile at runtime</a>
 * <a href="https://www.youtube.com/watch?v=L-DVJO7u5Vw">A powerful command-shell and agent migration</a>
 * <a href="https://www.youtube.com/watch?v=D8zDycuZHqg">Alan post-exploitation framework v4.0 demo</a>
+* <a href="https://www.youtube.com/watch?v=rFG6PCR6tJM">Alan 5.0 C2 Framework - All You Can In-Memory Edition</a>
 
 ## Documentation:
 Blog posts
+* <a href="http://antonioparata.blogspot.com/2021/12/alan-c2-framework-v50-all-you-can-in.html">Alan c2 Framework v5.0 - All you can in-memory edition</a>
 * <a href="http://antonioparata.blogspot.com/2021/05/alan-post-exploitation-framework.html">Alan - A post exploitation framework</a>
 * <a href="http://antonioparata.blogspot.com/2021/09/alan-post-exploitation-framework-v40.html">Alan post-exploitation framework v4.0 released</a>
 
 For more information on its usage please read the <a href="https://github.com/enkomio/AlanFramework/blob/main/doc/Alan%20Documentation%20-%20v3.0.502.19.pdf">documentation</a>.
 
 # Changelog
+### 5.0.509.20 - 13/12/2021
+* Implemented `run` command
+* Implemented `kill` command
+* Implemented `exec` command
+* Removed `inject` message since it can be achieved with the `run` command in background
+* Created stager and PE loader to make the agent stealthier. Each generated agent file has a different hash
+* Improved code injection to bypass Dynamic Code Policy Mitigation
+* It is now possible to specify the agent file name to create during the wizard
+* Fixed error in `upload` and `download` commands
+* Fixed error in shell creation. The command shell process token did not have the same agent integrity level
+* Removed exported function from DLL agent artifact
+* Added current working directory to `info` command
+* Extended `shell` command to execute a single command
+* 
 ### 4.0.0. - 26/09/2021
 * Added `inject` command. This command allows the operator to inject code into a remote process
 * Added `sleep` command performed in short sleep of 400 msec each.
