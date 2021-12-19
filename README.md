@@ -9,6 +9,16 @@ You can download the binary from: <a href="https://github.com/enkomio/AlanFramew
 
 <a href="https://github.com/enkomio/AlanFramework/releases/latest">Download Alan Framework</a>
 
+## Notable Features
+* You can run your preferred tool directly in-memory
+* Supported agent types: Powershell (x86/x64), DLL (x86/x64), Executable (x86/x64), Shellcode (x86/x64)
+* Server.exe can be executed in Linux (via dotnet core)
+* The network communication is fully encrypted with a session key not recoverable from the agent binary of the traffic dump
+* Communication via HTTP/HTTPS
+* No external dependencies or libraries need to be installed
+* A powerfull command shell
+* The agent configuration can be updated on the fly (you can change port and protocol too)
+
 ## Videos: 
 
 * <a href="https://www.youtube.com/watch?v=dgEBEAfEseY">Introduction</a>
