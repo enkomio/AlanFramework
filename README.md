@@ -24,8 +24,8 @@ Alan Framework is a post-exploitation framework useful during red-team activitie
 Blog posts
 * <a href="http://antonioparata.blogspot.com/2022/02/alan-c2-framework-v60-alan-javascript.html">Alan c2 Framework v6.0: Alan + JavaScript = ♡</a>
 * <a href="https://antonioparata.blogspot.com/2021/12/alan-c2-framework-v50-all-you-can-in.html">Alan c2 Framework v5.0 - All you can in-memory edition</a>
-* <a href="https://antonioparata.blogspot.com/2021/05/alan-post-exploitation-framework.html">Alan - A post exploitation framework</a>
 * <a href="https://antonioparata.blogspot.com/2021/09/alan-post-exploitation-framework-v40.html">Alan post-exploitation framework v4.0 released</a>
+* <a href="https://antonioparata.blogspot.com/2021/05/alan-post-exploitation-framework.html">Alan - A post exploitation framework</a>
 
 For more information on its usage please read the <a href="https://github.com/enkomio/AlanFramework/tree/main/doc">documentation</a>.
 
