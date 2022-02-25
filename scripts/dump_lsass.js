@@ -250,7 +250,7 @@ function dump_process(target_process) {
                 hProcess,
                 process_id,
                 hFile,
-                0x00000000, // MiniDumpNormal 
+                0x00000002, // MiniDumpWithFullMemory  
                 0,
                 0,
                 0
