@@ -3,7 +3,7 @@ Alan Framework is a post-exploitation framework useful during red-team activitie
 
 **If you find my tool useful, please consider to <a href="https://github.com/sponsors/enkomio">sponsor me</a>.**
 
-**If you are a company and want to become an Alan early adopter, discover how by reading <a href="https://github.com/enkomio/AlanFramework/blob/main/doc/Alan%20early-adopters%20program.pdf">this</a>. Early adopters have access to the Alan agent source code and much more.**
+**If you are a company and want to take part to the Alan early adopter program, read <a href="https://github.com/enkomio/AlanFramework/blob/main/doc/Alan%20early-adopters%20program.pdf">this</a>. Early adopters have access to the Alan agent source code and much more.**
 
 ## Download
 
