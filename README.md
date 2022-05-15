@@ -12,6 +12,7 @@ Alan Framework is a post-exploitation framework useful during red-team activitie
 ## Notable Features
 * You can run your preferred tool directly in-memory
 * JavaScript script execution (in-memory without third party dependency)
+* Fully compliant SOCKS5 proxy
 * Supported agent types: Powershell (x86/x64), DLL (x86/x64), Executable (x86/x64), Shellcode (x86/x64)
 * Server.exe can be executed in Linux (via dotnet core)
 * The network communication is fully encrypted with a session key not recoverable from the agent binary or from a traffic dump
