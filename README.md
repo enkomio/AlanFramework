@@ -29,11 +29,11 @@ Blog posts
 
 For more information on its usage please read the <a href="https://github.com/enkomio/AlanFramework/tree/main/doc">documentation</a>.
 
-## Videos (from oldest to newest): 
-| [![Alan v1.0 - A Post-Exploitation Framework](https://img.youtube.com/vi/dgEBEAfEseY/0.jpg)](https://www.youtube.com/watch?v=dgEBEAfEseY) | [![Alan post-exploitation framework - Update the agent profile at runtime](https://img.youtube.com/vi/oLXYUCX7dVY/0.jpg)](https://www.youtube.com/watch?v=oLXYUCX7dVY) |
-| --- | --- |
-| [![Alan v3.0 - Post-Exploitation Framework](https://img.youtube.com/vi/L-DVJO7u5Vw/0.jpg)](https://www.youtube.com/watch?v=L-DVJO7u5Vw)  | [![Alan post-exploitation framework v4.0 demo](https://img.youtube.com/vi/D8zDycuZHqg/0.jpg)](https://www.youtube.com/watch?v=D8zDycuZHqg)  | 
-| [![Alan 5.0 C2 Framework - All You Can In-Memory Edition](https://img.youtube.com/vi/rFG6PCR6tJM/0.jpg)](https://www.youtube.com/watch?v=rFG6PCR6tJM) | [![Alan C2 Framework 6.0 - Alan + JavaScript = ♡](https://img.youtube.com/vi/8AvE0SpvBDY/0.jpg)](https://www.youtube.com/watch?v=8AvE0SpvBDY) |
+## Videos: 
+
+| Alan v6.0.511.28 [![Alan C2 Framework 6.0 - Alan + JavaScript = ♡](https://img.youtube.com/vi/8AvE0SpvBDY/0.jpg)](https://www.youtube.com/watch?v=8AvE0SpvBDY) |  Alan v5.0.509.20 [![Alan 5.0 C2 Framework - All You Can In-Memory Edition](https://img.youtube.com/vi/rFG6PCR6tJM/0.jpg)](https://www.youtube.com/watch?v=rFG6PCR6tJM) | Alan v4.0.0 [![Alan post-exploitation framework v4.0 demo](https://img.youtube.com/vi/D8zDycuZHqg/0.jpg)](https://www.youtube.com/watch?v=D8zDycuZHqg) |
+|--- |--- |--- |
+| Alan v3.0.0 [![Alan v3.0 - Post-Exploitation Framework](https://img.youtube.com/vi/L-DVJO7u5Vw/0.jpg)](https://www.youtube.com/watch?v=L-DVJO7u5Vw) | Alan v2.0.500.23 [![Alan post-exploitation framework - Update the agent profile at runtime](https://img.youtube.com/vi/oLXYUCX7dVY/0.jpg)](https://www.youtube.com/watch?v=oLXYUCX7dVY) | Alan v1.0.0 [![Alan v1.0 - A Post-Exploitation Framework](https://img.youtube.com/vi/dgEBEAfEseY/0.jpg)](https://www.youtube.com/watch?v=dgEBEAfEseY) |
 
 # Changelog
 ### v7.0.514.10 - 15/05/2022
@@ -55,7 +55,7 @@ For more information on its usage please read the <a href="https://github.com/en
 * The `run` was extended to support the execution of Javascript files.
 * `info++` command now shows the Volume label and the FS type.
 
-### 5.0.509.20 - 13/12/2021
+### v5.0.509.20 - 13/12/2021
 * Implemented `run` command
 * Implemented `kill` command
 * Implemented `exec` command
@@ -69,7 +69,7 @@ For more information on its usage please read the <a href="https://github.com/en
 * Added current working directory to `info` command
 * Extended `shell` command to execute a single command
 
-### 4.0.0. - 26/09/2021
+### v4.0.0 - 26/09/2021
 * Added `inject` command. This command allows the operator to inject code into a remote process
 * Added `sleep` command performed in short sleep of 400 msec each.
 * Introduced Jitter concept in `sleep`
@@ -84,7 +84,7 @@ For more information on its usage please read the <a href="https://github.com/en
 * Added information on process token privileges
 * Added information on process token groups
 
-### 3.0.0 - 15/05/2021
+### v3.0.0 - 15/05/2021
 * Renamed agent shell `quit` command to `exit`
 * Implemented agent migration via `migrate` command
 * Fixed error in retrieving OS version
@@ -96,7 +96,7 @@ For more information on its usage please read the <a href="https://github.com/en
 * Implemented `ErrorRequest` to customize the http/s listener response for bad requests
 * Implemented `prepend` and `append` as HTTP server request option to specify in the agent prof
 
-### 2.0.500.23 - 20/03/2021
+### v2.0.500.23 - 20/03/2021
 * Implemented agent `detach` command to temporary exit from a joined agent
 * Implemented shell `detach` command to temporary exit from a command shell
 * Implemented `listeners` command to list the available listeners
@@ -105,5 +105,5 @@ For more information on its usage please read the <a href="https://github.com/en
 * Implemented `update` command to update the agent configuration
 * Windows7 is now supported
 
-### 1.0.0 - 22/02/2021
+### v1.0.0 - 22/02/2021
 * First Release
