@@ -36,6 +36,18 @@ For more information on its usage please read the <a href="https://github.com/en
 | [![Alan 5.0 C2 Framework - All You Can In-Memory Edition](https://img.youtube.com/vi/rFG6PCR6tJM/0.jpg)](https://www.youtube.com/watch?v=rFG6PCR6tJM) | [![Alan C2 Framework 6.0 - Alan + JavaScript = ♡](https://img.youtube.com/vi/8AvE0SpvBDY/0.jpg)](https://www.youtube.com/watch?v=8AvE0SpvBDY) |
 
 # Changelog
+### v7.0.514.10 - 15/05/2022
+* Implemented `proxy` command for pivoting
+* The `info` and `info++` commands display if the agent is using a proxy
+* Fixed bug on network communication (Issue 2)
+* Fixed error in PE loader when function are import via ordinal
+* Fixed JS module causing memory free ahead of time
+* Fixed error in `run` command that cause the `&` option to not work
+* The log messages are now saved to file `alan.log`
+* All the generated output and user input is logged to an evidence file inside the `evidences` folder
+* Added machine ID information to `info` command
+* Added `Vanilla` package type for agent creation. This allows a better integration of custom packer.
+
 ### v6.0.511.28 24/02/2022
 * x86/x64 PE loaders modified to update the PEB->Ldr field. This allows the system to call DLL_PROCESS_DETACH on the injected DLL.
 * Increase max response size to 1GB. This fix the download of big files.
