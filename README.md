@@ -34,9 +34,9 @@ For more information on its usage please read the <a href="https://github.com/en
 ## Videos: 
 Demo videos
 
-| Alan v7.0.514.10 [![Alan C2 Framework v7.0, codename: Hyper-Pivoting](https://img.youtube.com/vi/66reccDHio8/0.jpg)](https://www.youtube.com/watch?v=66reccDHio8) | Alan v6.0.511.28 [![Alan C2 Framework 6.0 - Alan + JavaScript = ♡](https://img.youtube.com/vi/8AvE0SpvBDY/0.jpg)](https://www.youtube.com/watch?v=8AvE0SpvBDY) |  Alan v5.0.509.20 [![Alan 5.0 C2 Framework - All You Can In-Memory Edition](https://img.youtube.com/vi/rFG6PCR6tJM/0.jpg)](https://www.youtube.com/watch?v=rFG6PCR6tJM) | 
+| Alan v7.0.514.10 - SOCKS5 Proxy  [![Alan C2 Framework v7.0, codename: Hyper-Pivoting](https://img.youtube.com/vi/66reccDHio8/0.jpg)](https://www.youtube.com/watch?v=66reccDHio8) | Alan v6.0.511.28 - JS Execution [![Alan C2 Framework 6.0 - Alan + JavaScript = ♡](https://img.youtube.com/vi/8AvE0SpvBDY/0.jpg)](https://www.youtube.com/watch?v=8AvE0SpvBDY) |  Alan v5.0.509.20 - In-Memory Execution [![Alan 5.0 C2 Framework - All You Can In-Memory Edition](https://img.youtube.com/vi/rFG6PCR6tJM/0.jpg)](https://www.youtube.com/watch?v=rFG6PCR6tJM) | 
 | :---:  | :---:  | :---:  |
-|Alan v4.0.0 [![Alan post-exploitation framework v4.0 demo](https://img.youtube.com/vi/D8zDycuZHqg/0.jpg)](https://www.youtube.com/watch?v=D8zDycuZHqg)| Alan v3.0.0 [![Alan v3.0 - Post-Exploitation Framework](https://img.youtube.com/vi/L-DVJO7u5Vw/0.jpg)](https://www.youtube.com/watch?v=L-DVJO7u5Vw) | Alan v2.0.500.23 [![Alan post-exploitation framework - Update the agent profile at runtime](https://img.youtube.com/vi/oLXYUCX7dVY/0.jpg)](https://www.youtube.com/watch?v=oLXYUCX7dVY) | 
+|Alan v4.0.0 - x64 Agent && Inject [![Alan post-exploitation framework v4.0 demo](https://img.youtube.com/vi/D8zDycuZHqg/0.jpg)](https://www.youtube.com/watch?v=D8zDycuZHqg)| Alan v3.0.0 - Misc Commands [![Alan v3.0 - Post-Exploitation Framework](https://img.youtube.com/vi/L-DVJO7u5Vw/0.jpg)](https://www.youtube.com/watch?v=L-DVJO7u5Vw) | Alan v2.0.500.23 [![Alan post-exploitation framework - Update the agent profile at runtime](https://img.youtube.com/vi/oLXYUCX7dVY/0.jpg)](https://www.youtube.com/watch?v=oLXYUCX7dVY) | 
 |Alan v1.0.0 [![Alan v1.0 - A Post-Exploitation Framework](https://img.youtube.com/vi/dgEBEAfEseY/0.jpg)](https://www.youtube.com/watch?v=dgEBEAfEseY) |  | |
 
 
