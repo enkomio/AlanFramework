@@ -1,4 +1,4 @@
-Disclaimer: For personal reason I decided to put this project on hold. 
+For personal reason I decided to put this project on hold. 
 ----
 ----
 
