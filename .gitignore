@@ -3,6 +3,7 @@
 binaries/
 build/
 out/
+packages/
 
 
 # Prerequisites
