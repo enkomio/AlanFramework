@@ -284,7 +284,7 @@
     <ClCompile Include="run_js.c" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\.build\vs2019\quickjs.vcxproj">
+    <ProjectReference Include="..\solution_dir\vs2022\quickjs.vcxproj">
       <Project>{df2bc416-4b0b-43b2-5423-ce88c081a913}</Project>
     </ProjectReference>
   </ItemGroup>
