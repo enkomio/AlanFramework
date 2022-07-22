@@ -3,7 +3,8 @@ Alan Framework is a post-exploitation framework useful during red-team activitie
 
 **If you find my tool useful, please consider to <a href="https://github.com/sponsors/enkomio">sponsor me</a>.**
 
-**If you are a company and want to take part to the Alan early adopter program, read <a href="https://github.com/enkomio/AlanFramework/blob/main/doc/Alan%20post-exploitation%20framework%20-%20Early%20Adopter%20Programs.pdf">this</a>. Early adopters have access to the Alan agent source code and much more.**
+# Disclaimer
+The creation of this kind of software has always caused controversies. If you wonder why I decided to create this tool is because I'm convinced that the ultimate learning experience is implementing what you learned. During the reverse engineering process, many small details are overlooked. Little by little, these details prevent the researcher from having a complete picture of what is going on (eg. the allocation of 0x208 bytes is a good enough pattern for a YARA rule?). Finally, I'm a programmer first, and I love to develop this kind of program :) 
 
 ## Download
 
