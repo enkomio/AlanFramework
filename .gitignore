@@ -4,6 +4,12 @@ binaries/
 build/
 out/
 packages/
+obj/**/*
+bin/**/*
+Debug/**/*
+Release/**/*
+x64/**/*
+x86/**/*
 
 
 # Prerequisites
