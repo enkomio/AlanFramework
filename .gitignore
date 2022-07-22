@@ -1,3 +1,10 @@
+# Alan dirs
+.vs/*
+binaries/
+build/
+out/
+
+
 # Prerequisites
 *.d
 
