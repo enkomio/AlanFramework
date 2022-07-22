@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="storage">
+      <UniqueIdentifier>{7A1ED8AE-E6FD-564A-EF15-E2205B74BDAB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="storage\dybase">
+      <UniqueIdentifier>{81D523EE-6DA3-17F4-5637-881A42A4F358}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="storage\dybase\include">
+      <UniqueIdentifier>{F4ED6A98-E0E7-93EA-C954-2AFBB5EDF956}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="storage\dybase\src">
+      <UniqueIdentifier>{186C405F-0450-01B5-6DB0-FB0759B3EB36}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\cutils.h" />
+    <ClInclude Include="..\..\libregexp-opcode.h" />
+    <ClInclude Include="..\..\libregexp.h" />
+    <ClInclude Include="..\..\libunicode-table.h" />
+    <ClInclude Include="..\..\libunicode.h" />
+    <ClInclude Include="..\..\list.h" />
+    <ClInclude Include="..\..\quickjs-atom.h" />
+    <ClInclude Include="..\..\quickjs-jsx.h" />
+    <ClInclude Include="..\..\quickjs-libc.h" />
+    <ClInclude Include="..\..\quickjs-opcode.h" />
+    <ClInclude Include="..\..\quickjs.h" />
+    <ClInclude Include="..\..\storage\dybase\include\dybase.h">
+      <Filter>storage\dybase\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\storage\dybase\src\btree.h">
+      <Filter>storage\dybase\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\storage\dybase\src\buffer.h">
+      <Filter>storage\dybase\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\storage\dybase\src\database.h">
+      <Filter>storage\dybase\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\storage\dybase\src\file.h">
+      <Filter>storage\dybase\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\storage\dybase\src\hashtab.h">
+      <Filter>storage\dybase\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\storage\dybase\src\pagepool.h">
+      <Filter>storage\dybase\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\storage\dybase\src\stdtp.h">
+      <Filter>storage\dybase\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\storage\dybase\src\sync.h">
+      <Filter>storage\dybase\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\storage\quickjs-storage.h">
+      <Filter>storage</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\cutils.c" />
+    <ClCompile Include="..\..\libbf.c" />
+    <ClCompile Include="..\..\libregexp.c" />
+    <ClCompile Include="..\..\libunicode.c" />
+    <ClCompile Include="..\..\quickjs-libc.c" />
+    <ClCompile Include="..\..\quickjs.c" />
+    <ClCompile Include="..\..\storage\dybase\src\btree.cpp">
+      <Filter>storage\dybase\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\storage\dybase\src\database.cpp">
+      <Filter>storage\dybase\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\storage\dybase\src\dybase.cpp">
+      <Filter>storage\dybase\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\storage\dybase\src\file.cpp">
+      <Filter>storage\dybase\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\storage\dybase\src\pagepool.cpp">
+      <Filter>storage\dybase\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\storage\quickjs-storage.c">
+      <Filter>storage</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
