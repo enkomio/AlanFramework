@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="JsonHelper.fs" />
+    <Compile Include="Utility.fs" />
+    <Compile Include="LiteDbRepository.fs" />
+    <Compile Include="AgentSettings.fs" />
+    <Compile Include="Entities.fs" />
+    <Compile Include="ArtifactPacker.fs" />
+    <Compile Include="IListener.fs" />
+    <Compile Include="Repositories.fs" />
+    <Compile Include="AgentMessages.fs" />
+    <Compile Include="FrameworkMessages.fs" />
+    <Compile Include="MessageBroker.fs" />
+    <Compile Include="DataFormatter.fs" />
+    <Compile Include="AgentSession.fs" />
+    <Compile Include="AgentService.fs" />
+    <None Include="paket.references" />
+  </ItemGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
+</Project>

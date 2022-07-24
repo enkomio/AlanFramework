@@ -1,0 +1,20 @@
+source https://nuget.org/api/v2
+
+nuget ES.Fslog.Core
+nuget FSharp.Core
+nuget Suave
+nuget BouncyCastle.NetCore
+nuget Newtonsoft.Json
+nuget Argu
+nuget LiteDB
+nuget Autofac
+nuget K4os.Compression.LZ4
+nuget System.Reflection.Metadata
+nuget Fake.Core.Target
+nuget Fake.Core.ReleaseNotes
+nuget Fake.DotNet.MSBuild
+nuget Fake.DotNet.AssemblyInfoFile
+nuget Fake.IO.FileSystem
+nuget Fake.Core.Process
+nuget Fake.IO.Zip
+nuget PeNet

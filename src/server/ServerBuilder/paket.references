@@ -1,0 +1,10 @@
+﻿ES.Fslog.Core
+Argu
+FSharp.Core
+Fake.Core.Target
+Fake.Core.ReleaseNotes
+Fake.DotNet.MSBuild
+Fake.DotNet.AssemblyInfoFile
+Fake.IO.FileSystem
+Fake.Core.Process
+Fake.IO.Zip

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="resources\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="paket.references" />
+    <Content Include="profiles\agent_default_profile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="config\server_config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="ServerSettings.fs" />
+    <Compile Include="Consoles\NetworkUtility.fs" />
+    <Compile Include="Consoles\ICliConsole.fs" />
+    <Compile Include="Consoles\ConsoleUtility.fs" />
+    <Compile Include="Consoles\AgentConsoleOutput.fs" />
+    <Compile Include="Consoles\DashboardCliConsole.fs" />
+    <Compile Include="Consoles\AgentCliConsole.fs" />
+    <Compile Include="Consoles\AgentShellCliConsole.fs" />
+    <Compile Include="Consoles\CliConsole.fs" />
+    <Compile Include="Listeners\WebListenerSettings.fs" />
+    <Compile Include="Listeners\WebListener.fs" />
+    <Compile Include="EvidenceLogger.fs" />
+    <Compile Include="ProxyStorage.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ES.Alan.Core\ES.Alan.Core.fsproj" />
+  </ItemGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
+</Project>

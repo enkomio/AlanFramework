@@ -1,0 +1,61 @@
+﻿{
+  "BindingPort": 8443,
+  "BindingIp": "0.0.0.0",
+  "Timeout": 1000,
+  "CAFile": "certificate.pfx",
+  "SuccessRequest": {
+    "Prepend": "<!DOCTYPE html>\n<html>\n<head>\n<title>Welcome to Nginx!</title>\n<style>\n    body {\n        width: 35em;\n        margin: 0 auto;\n        font-family: Tahoma, Verdana, Arial, sans-serif;\n\t\t.bg { background-image: url(\"data:image/png;base64,",
+    "Append": "\");}\n    }\n</style>\n</head>\n<body>\n<h1>Welcome to Nginx!</h1>\n<p>If you see this page, the Nginx web platform is successfully installed and\nworking. Further configuration is required.</p>\n\n<p>For online documentation and support please refer to\n<a href=\"http://nginx.org/\">nginx.org</a>.<br/>\nCommercial support is available at\n<a href=\"http://nginx.com/\">nginx.com</a>.</p>\n\n<p><em>Thank you for flying Nginx.</em></p>\n</body>\n</html>",
+    "Headers": [
+      {
+        "Name": "Content-Type",
+        "Value": "text/html"
+      },
+      {
+        "Name": "Server",
+        "Value": "nginx/1.21.2"
+      }
+    ]
+  },
+  "ErrorRequest": {
+    "Html": "<html>\n<head><title>404 Not Found</title></head>\n<body bgcolor=\"white\">\n<center><h1>404 Not Found</h1></center>\n<hr><center>nginx/1.14.0 (Ubuntu)</center>\n</body>\n</html>\n<!-- a padding to disable MSIE and Chrome friendly error page -->\n<!-- a padding to disable MSIE and Chrome friendly error page -->\n<!-- a padding to disable MSIE and Chrome friendly error page -->\n<!-- a padding to disable MSIE and Chrome friendly error page -->\n<!-- a padding to disable MSIE and Chrome friendly error page -->\n<!-- a padding to disable MSIE and Chrome friendly error page -->",
+    "StatusCode": 404,
+    "Headers": [
+      {
+        "Name": "Content-Type",
+        "Value": "text/html"
+      },
+      {
+        "Name": "Connection",
+        "Value": "keep-alive"
+      },
+      {
+        "Name": "Server",
+        "Value": "nginx/1.21.2"
+      }
+    ]
+  },
+  "CA": {
+    "Issuer": {
+      "CommonName": "Enkomio",
+      "OrganizationalUnit": "AlanFramework",
+      "Organization": "AlanCA",
+      "Locality": "IT",
+      "StateOrProvinceName": "IT",
+      "CountryName": "Italy",
+      "Email": "alan@localhost"
+    },
+    "Subject": {
+      "CommonName": "Enkomio",
+      "OrganizationalUnit": "AlanFramework",
+      "Organization": "AlanCA",
+      "Locality": "IT",
+      "StateOrProvinceName": "IT",
+      "CountryName": "Italy",
+      "Email": "alan@localhost"
+    },
+    "Serial": 0,
+    "NotAfter": "",
+    "Password": "Turing"
+  }
+}
