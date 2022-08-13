@@ -4,7 +4,7 @@ Alan Framework is a post-exploitation framework useful during red-team activitie
 **If you find my tool useful, please consider to <a href="https://github.com/sponsors/enkomio">sponsor me</a>.**
 
 # ⚠⚠⚠ Disclaimer ⚠⚠⚠
-The creation of this kind of software has always caused controversies. If you wonder why I decided to create this tool is because I'm convinced that the ultimate learning experience is implementing what you learned. During the reverse engineering process, many small details are overlooked. Little by little, these details prevent the researcher from having a complete picture of what is going on. Finally, I'm a programmer first, and I love to develop this kind of program :) 
+The creation of this kind of software has always caused controversies. If you're wondering why I decided to create this tool, it's because I'm convinced that the ultimate learning experience is implementing what you learned. During the reverse engineering process, many small details are overlooked. Little by little, these details prevent the researcher from having a complete picture of what is going on. Finally, I'm a programmer first, and I love to develop this kind of program 😄
 
 ## Download
 
