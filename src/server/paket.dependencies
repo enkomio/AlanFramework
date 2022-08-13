@@ -14,7 +14,8 @@ nuget Fake.Core.Target
 nuget Fake.Core.ReleaseNotes
 nuget Fake.DotNet.MSBuild
 nuget Fake.DotNet.AssemblyInfoFile
+nuget Fake.IO.Zip
+nuget Fake.Build.CMake 
 nuget Fake.IO.FileSystem
 nuget Fake.Core.Process
-nuget Fake.IO.Zip
 nuget PeNet
