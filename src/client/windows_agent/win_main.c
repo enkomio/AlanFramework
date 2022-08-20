@@ -39,7 +39,7 @@ static char* read_config(void) {
 	do
 	{
 		if (!memcmp(&pSection->Name, section_name, sizeof section_name)) {
-			section_content = (void*)hModule + pSection->VirtualAddress;
+			section_content = (intptr_t)hModule + (intptr_t)pSection->VirtualAddress;
 			break;
 		}
 		pSection += 1;

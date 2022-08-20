@@ -5,7 +5,7 @@ ifdef rax
 	; compile as 64 bit code
 	END_PROGRAM textequ <END>
 	.code
-	include x86\alter_pe_sections.inc
+	include x64\alter_pe_sections.inc
 
 else
 	; compile as 32 bit code

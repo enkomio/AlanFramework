@@ -1,8 +1,7 @@
 ﻿cmake_minimum_required (VERSION 3.20)
 
-project ("Alan agent")
+project ("Alan agent" C ASM_MASM)
 
-enable_language(C ASM_MASM)
 add_definitions(/D_WIN32_WINNT=0x0601)
 
 include_directories(

@@ -1,6 +1,6 @@
-﻿ES.Fslog.Core
-Argu
+﻿Argu
 FSharp.Core
+ES.Fslog.Core
 Fake.Core.Target
 Fake.Core.ReleaseNotes
 Fake.DotNet.MSBuild
@@ -8,3 +8,4 @@ Fake.DotNet.AssemblyInfoFile
 Fake.IO.FileSystem
 Fake.Core.Process
 Fake.IO.Zip
+Fake.Build.CMake

@@ -8,9 +8,9 @@ open System.Runtime.InteropServices
 [<assembly: GuidAttribute("E95E7A2F-20A3-4C0A-9C7A-A4644AFB35AA")>]
 [<assembly: AssemblyCompanyAttribute("Enkomio")>]
 [<assembly: AssemblyDescriptionAttribute("A post-exploitation framework.")>]
-[<assembly: AssemblyVersionAttribute("7.0.514.10")>]
-[<assembly: AssemblyFileVersionAttribute("7.0.514.10")>]
-[<assembly: AssemblyInformationalVersionAttribute("7.0.514.10")>]
+[<assembly: AssemblyVersionAttribute("7.0.518.1")>]
+[<assembly: AssemblyFileVersionAttribute("7.0.518.1")>]
+[<assembly: AssemblyInformationalVersionAttribute("7.0.518.1")>]
 do ()
 
 module internal AssemblyVersionInformation =
@@ -19,6 +19,6 @@ module internal AssemblyVersionInformation =
     let [<Literal>] Guid = "E95E7A2F-20A3-4C0A-9C7A-A4644AFB35AA"
     let [<Literal>] AssemblyCompany = "Enkomio"
     let [<Literal>] AssemblyDescription = "A post-exploitation framework."
-    let [<Literal>] AssemblyVersion = "7.0.514.10"
-    let [<Literal>] AssemblyFileVersion = "7.0.514.10"
-    let [<Literal>] AssemblyInformationalVersion = "7.0.514.10"
+    let [<Literal>] AssemblyVersion = "7.0.518.1"
+    let [<Literal>] AssemblyFileVersion = "7.0.518.1"
+    let [<Literal>] AssemblyInformationalVersion = "7.0.518.1"

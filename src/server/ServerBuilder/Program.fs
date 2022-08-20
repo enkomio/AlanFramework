@@ -6,6 +6,7 @@ open System.IO
 open Fake.IO
 open Fake.DotNet
 open Fake.Core
+open Fake.Build
 open Fake.Core.TargetOperators
 
 module Program =
@@ -74,13 +75,99 @@ module Program =
         ] 
 
         let properties = [("nodeReuse", "False")]    
-        
+
         MSBuild.runReleaseExt id buildAppDir (defaultProperties@properties) "Clean;ReBuild" [projectPath]
         |> Trace.logItems "Build Output: "
 
     /// Targets
+    let createCompileQuickJSModuleTarget(sourceDir: String, buildDir: String) =
+        Target.create "CompileQuickJSModule" (fun _ ->
+            let quickJSModuleProject = Path.Combine(sourceDir, "..", "quickjs-module", "wqjs", "wqjs.vcxproj")
+            let alanDirectory = Path.Combine(buildDir, "Alan")
+           
+            [
+                ("x64", "WINDOWS", "wqjsx64.bin", "resources")
+                ("x64", "CONSOLE", "cqjsx64.exe", "tools")
+                ("x86", "WINDOWS", "wqjsx86.bin", "resources")
+                ("x86", "CONSOLE", "cqjsx86.exe", "tools")
+            ]
+            |> List.iter(fun (platform, subsystem, destFileName, destDirectory) ->
+                let buildAppDir = Path.Combine(buildDir, "quickjs", platform)
+                Directory.CreateDirectory(buildAppDir) |> ignore
+                let destDirFullPath = Path.Combine(alanDirectory, destDirectory)
+                Directory.CreateDirectory(destDirFullPath) |> ignore
+
+                let propsFile = Path.Combine(Path.GetTempPath(), "subsystem_proj.props")
+                File.WriteAllText(propsFile, String.Format("""
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+                      <ItemDefinitionGroup>
+                        <Link>
+                          <SubSystem>{0}</SubSystem>
+                          <GenerateDebugInformation>false</GenerateDebugInformation>
+                        </Link>
+                      </ItemDefinitionGroup>
+                    </Project>
+                """.Trim(), subsystem))
+
+                let properties = [
+                    ("Platform", platform)
+                    ("ForceImportBeforeCppTargets", propsFile)
+                ] 
+                compile(quickJSModuleProject, buildAppDir, properties)
+                File.Delete(propsFile)
+
+                // copy the file to the resource directory
+                let platformString = if platform.Equals("x64", StringComparison.OrdinalIgnoreCase) then "x64" else "Win32"
+                let sourceFile = Path.Combine(sourceDir, "..", "quickjs-module", ".bin", "Release", platformString, "wqjs.exe")
+                let destFile = Path.Combine(destDirFullPath, destFileName)
+                Shell.copyFile destFile sourceFile
+            )
+        )
+
+    let createCompileClientTarget(sourceDir: String, buildDir: String) =
+        Target.create "CompileClient" (fun _ ->
+            let commonGenerateParams (platform: String) (parameters: CMake.CMakeGenerateParams) = {
+                parameters with
+                    Generator = "Visual Studio 17 2022"
+                    Platform = platform
+                    Variables = [
+                            {
+                                Name = "CMAKE_BUILD_TYPE"
+                                Value = CMake.CMakeString("Release")
+                            }
+                        ]
+            }
+
+            let commonBuildParams (parameters:CMake.CMakeBuildParams) = {
+                parameters with
+                    Config = "Release"
+            }
+
+            ["x64"; "Win32"] 
+            |> List.iter (fun platform ->
+                let cmakeSourceDir = Path.Combine(sourceDir, "..", "client") |> Path.GetFullPath
+                let outDir = Path.Combine(buildDir, "client", platform)
+                Directory.CreateDirectory(outDir) |> ignore
+
+                CMake.Generate (fun p ->
+                    { commonGenerateParams platform p with
+                        SourceDirectory = cmakeSourceDir
+                        BinaryDirectory = outDir
+                    }
+                )
+                
+                CMake.Build (fun p -> 
+                    { commonBuildParams p with
+                        BinaryDirectory = outDir
+                    }
+                )
+            )   
+        )
+
     let createCleanTarget(outDir: String) =
         let buildDir = Path.Combine(outDir, "build")
+        let clientDir = Path.Combine(outDir, "client")
         let releaseDir = Path.Combine(outDir, "release")
         let debugSymbol = Path.Combine(outDir, "symbols")
 
@@ -104,60 +191,41 @@ module Program =
 
     let createCopyClientArtefactsTarget(sourceDir: String, outDir: String) =        
         Target.create "CopyClientArtefacts" (fun _ ->  
-            let debugSymbol = Path.Combine(outDir, "symbols")
+            let clientDir = Path.Combine(outDir, "client")          
             let destDirectory = Path.Combine(outDir, "build", "Alan", "resources")
             Directory.CreateDirectory(destDirectory) |> ignore
 
             [
                 // agent files
-                ("x86-Release", "agent_exe.exe", "agent32.bin")
-                ("x86-Release", "agent_dll.dll", "agent32l.bin")
-                ("x64-Release", "agent_exe.exe", "agent64.bin")
-                ("x64-Release", "agent_dll.dll", "agent64l.bin")
+                ("Win32", "agent_exe.exe", "agent32.bin")
+                ("Win32", "agent_dll.dll", "agent32l.bin")
+                ("x64", "agent_exe.exe", "agent64.bin")
+                ("x64", "agent_dll.dll", "agent64l.bin")
 
                 // console interceptor files
-                ("x64-Release", "console_interceptor_dll.dll", "interceptorx64.bin")
-                ("x86-Release", "console_interceptor_dll.dll", "interceptorx86.bin")
+                ("x64", "console_interceptor_dll.dll", "interceptorx64.bin")
+                ("Win32", "console_interceptor_dll.dll", "interceptorx86.bin")
 
                 // socks5 proxy
-                ("x64-Release", "socks5_exe.exe", "socks5X64.bin")
-                ("x86-Release", "socks5_exe.exe", "socks5X86.bin")
+                ("x64", "socks5_exe.exe", "socks5X64.bin")
+                ("Win32", "socks5_exe.exe", "socks5X86.bin")
 
                 // Exe stager
-                ("x64-Release", "pe_packer_exe.exe", "stagerx64.bin")
-                ("x86-Release", "pe_packer_exe.exe", "stagerx86.bin")
-                ("x64-Release", "pe_packer_dll.dll", "stagerx64l.bin")
-                ("x86-Release", "pe_packer_dll.dll", "stagerx86l.bin")
+                ("x64", "pe_packer_exe.exe", "stagerx64.bin")
+                ("Win32", "pe_packer_exe.exe", "stagerx86.bin")
+                ("x64", "pe_packer_dll.dll", "stagerx64l.bin")
+                ("Win32", "pe_packer_dll.dll", "stagerx86l.bin")
             ]
             |> List.iter(fun (dir, fileName, destFileName) ->
-                let fullPath = Path.Combine(sourceDir, "..", "client", "build", dir, fileName) |> Path.GetFullPath
+                let fullPath = Path.Combine(clientDir, dir, "Release", fileName) |> Path.GetFullPath
                 let fullDestPath = Path.Combine(destDirectory, destFileName) |> Path.GetFullPath                
                 Shell.copyFile fullDestPath fullPath
-            )
-
-            // copy debug symbols
-            ["x86-Release"; "x64-Release"]
-            |> List.iter(fun dir ->
-                let folder = Path.Combine(sourceDir, "..", "client", "build", dir)
-                Directory.GetFiles(folder, "*.*", SearchOption.AllDirectories)  
-                |> Array.filter(fun file ->
-                    forbiddenExtensions
-                    |> List.exists(fun badExtension ->
-                        file.EndsWith(badExtension, StringComparison.OrdinalIgnoreCase)
-                    )
-                )
-                |> Array.iter(fun file -> 
-                    let destFile = Path.Combine(debugSymbol, Path.GetFileName(file))                
-                    File.Move(file, Path.Combine(debugSymbol, destFile))
-                    Console.WriteLine("Move {0} to {1}", file, destFile)
-                )
-            )
-            
+            )            
         )
 
-    let createCompileTarget(outDir: String) =
+    let createCompileServerTarget(outDir: String) =
         let buildDir = Path.Combine(outDir, "build")
-        Target.create "Compile" (fun _ ->
+        Target.create "CompileServer" (fun _ ->
             [
                 ("x64PELoader.vcxproj", [("Platform", "x64")])
                 ("x86PELoader.vcxproj", [("Platform", "x86")])
@@ -193,21 +261,14 @@ module Program =
             Shell.copyFile (Path.Combine(resourcesDestDir, "DotNetAgentRunnerX64.bin")) (Path.Combine(buildDir, "DotNetAgentRunnerX64", "DotNetAgentRunnerX64.dll"))
             Shell.copyFile (Path.Combine(resourcesDestDir, "DotNetAgentRunnerX86.bin")) (Path.Combine(buildDir, "DotNetAgentRunnerX86", "DotNetAgentRunnerX86.dll"))
             Shell.copyFile (Path.Combine(resourcesDestDir, "x64PELoader.bin")) (Path.Combine(buildDir, "x64PELoader", "x64PELoader.exe"))
-            Shell.copyFile (Path.Combine(resourcesDestDir, "x86PELoader.bin")) (Path.Combine(buildDir, "x86PELoader", "x86PELoader.exe"))
-            Shell.copyFile (Path.Combine(resourcesDestDir, "wqjsx64.bin")) (Path.Combine(artifactSrcDir, "wqjsx64.exe"))
-            Shell.copyFile (Path.Combine(resourcesDestDir, "wqjsx86.bin")) (Path.Combine(artifactSrcDir, "wqjsx86.exe"))
-
-            // copy tools
-            let toolDirectory = Path.Combine(alanDirectory, "tools")
-            Directory.CreateDirectory(toolDirectory) |> ignore
-            Shell.copyFile (Path.Combine(toolDirectory, "cqjsx64.exe")) (Path.Combine(artifactSrcDir, "cqjsx64.exe"))
-            Shell.copyFile (Path.Combine(toolDirectory, "cqjsx86.exe")) (Path.Combine(artifactSrcDir, "cqjsx86.exe"))
+            Shell.copyFile (Path.Combine(resourcesDestDir, "x86PELoader.bin")) (Path.Combine(buildDir, "x86PELoader", "x86PELoader.exe"))           
         )
 
     let createCleanBuildTarget(outDir: String) =
         let buildDir = Path.Combine(outDir, "build")
         let debugSymbol = Path.Combine(outDir, "symbols")
-        Directory.Delete(debugSymbol, true) 
+        if Directory.Exists(debugSymbol) then
+            Directory.Delete(debugSymbol, true) 
         Directory.CreateDirectory(debugSymbol) |> ignore
 
         Target.create "CleanBuild" (fun _ ->            
@@ -243,17 +304,25 @@ module Program =
         
         // create targets
         createCleanTarget(outDir)
+        createCompileClientTarget(sourceDir, outDir)      
+        createCompileQuickJSModuleTarget(sourceDir, outDir)
         createAssemblyInfoTarget(sourceDir, outDir)
-        createCompileTarget(outDir)
+        createCompileServerTarget(outDir)
         createCleanBuildTarget(outDir)
         createCopyClientArtefactsTarget(sourceDir, outDir)        
         createCopyServerArtefactsTarget(sourceDir, outDir)
         createReleaseTarget(outDir)
 
         // create build chain
+        // "CopyClientArtefacts"
+        //==> "CopyServerArtefacts"
+        
+
         "Clean"
+        ==> "CompileQuickJSModule"
+        ==> "CompileClient"
         ==> "AssemblyInfo"            
-        ==> "Compile"                  
+        ==> "CompileServer"                  
         ==> "CleanBuild"  
         ==> "CopyClientArtefacts"
         ==> "CopyServerArtefacts"
