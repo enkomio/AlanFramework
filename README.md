@@ -35,7 +35,7 @@ For more information on its usage please read the <a href="https://github.com/en
 ### Compile the source code
 To compile _Alan_ the following actions must be performed:
 * Ensure that you have installed <a href="https://cmake.org/">cmake</a> and that it is in the PATH (run _cmake --help_ to see if it works)
-* Visual Studio 2022. These steps were tested against version 17.3.1
+* Install Visual Studio 2022 (the Community Edition is fine). These steps were tested against version VS 2022 17.3.1
 * Be sure that _.NET Desktop Development_, _Desktop development with C++_ and the F# language are installed as part of the Visual Studio suite
 * Install .NET libraries by running: **./src/server/paket.exe install**
 * Open the file **.src/server/ServerSln.sln** in Visual Studio. Set the **ServerBuilder** project as the main one (right click -> Set as Startup Project)
