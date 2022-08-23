@@ -341,5 +341,5 @@ module Program =
         let releaseDir = Path.Combine(workingDir, "..", "..", "..", "Misc", "out") |> Path.GetFullPath
         generateFakeContext(workingDir)
         build(workingDir, releaseDir)
-        Console.WriteLine("Release file written at: " + Path.Combine(releaseDir + Path.DirectorySeparatorChar.ToString(), releaseFilename))
+        Console.WriteLine("Release file written at: " + Path.Combine(releaseDir + Path.DirectorySeparatorChar.ToString() + "Release" + Path.DirectorySeparatorChar.ToString(), releaseFilename))
         0
