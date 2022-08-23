@@ -32,6 +32,16 @@ Blog posts
 
 For more information on its usage please read the <a href="https://github.com/enkomio/AlanFramework/tree/main/doc">documentation</a>.
 
+### Compile the source code
+To compile _Alan_ the following actions must be performed:
+* Ensure that you have installed <a href="https://cmake.org/">cmake</a> and that it is in the PATH (run _cmake --help_ to see if it works)
+* Visual Studio 2022. These steps were tested against version 17.3.1
+* Be sure that _.NET Desktop Development_, _Desktop development with C++_ and the F# language are installed as part of the Visual Studio suite
+* Install .NET libraries by running: **./src/server/paket.exe install**
+* Open the file **.src/server/ServerSln.sln** in Visual Studio. Set the **ServerBuilder** project as the main one (right click -> Set as Startup Project)
+* Run the **ServerBuilder** which will compile everything
+* If the compilation ended succesfully, the Alan .zip file will be located in the newly created directory **Misc/out/release**
+
 ## Videos: 
 Demo videos
 
