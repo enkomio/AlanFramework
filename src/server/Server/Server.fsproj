@@ -5,9 +5,6 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Remove="resources\**" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="paket.references" />
     <Content Include="profiles\agent_default_profile.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
