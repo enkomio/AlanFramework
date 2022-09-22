@@ -238,9 +238,12 @@ type AgentCliConsole(messageBroker: MessageBroker, agentId: UInt32, networkUtili
 
                 // interact with the proxy
                 if args.[0].Equals("new") then
-                    if args.Length < 2 then
-                        writeLineText("Usage: proxy new [<bind address>] <port> [<username>] [<password>] [<x86|x64>]")
+                    if args.Length < 3 then
+                        writeLineText("Usage: proxy new <type> [<bind address>] <port> [<username>] [<password>] [<x86|x64>]")
                     else
+
+                        // TODO: implement proxy type
+
                         let port =
                             if args.Length = 2 then args.[1] else args.[2]
 
@@ -270,7 +273,8 @@ type AgentCliConsole(messageBroker: MessageBroker, agentId: UInt32, networkUtili
                                 address, 
                                 port, 
                                 username, 
-                                password
+                                password,
+                                ProxyType.Auto.ToString()
                             )
                         messageBroker.DispatchAndWaitHandling(this, newProxyMessage)
                         _logger?NewProxy(newProxyMessage.CreatedProxyId)
@@ -320,7 +324,7 @@ type AgentCliConsole(messageBroker: MessageBroker, agentId: UInt32, networkUtili
                             let username = (if args.Length > 3 then args.[3] else String.Empty)
                             let password = (if args.Length > 4 then args.[4] else String.Empty)
 
-                            let proxyOpt = new TryGetProxyMessage(address, port.ToString(), username, password)
+                            let proxyOpt = new TryGetProxyMessage(address, port.ToString(), username, password, ProxyType.Auto.ToString())
                             messageBroker.DispatchAndWaitHandling(this, proxyOpt)
 
                             match proxyOpt.Proxy with
@@ -335,12 +339,13 @@ type AgentCliConsole(messageBroker: MessageBroker, agentId: UInt32, networkUtili
                                         address, 
                                         port.ToString(), 
                                         username, 
-                                        password
+                                        password, 
+                                        ProxyType.Auto.ToString()
                                     )
                                 messageBroker.DispatchAndWaitHandling(this, newProxyMessage)
 
                                 // get again the proxy
-                                let proxyOpt = new TryGetProxyMessage(address, port.ToString(), username, password)
+                                let proxyOpt = new TryGetProxyMessage(address, port.ToString(), username, password, ProxyType.Auto.ToString())
                                 messageBroker.DispatchAndWaitHandling(this, proxyOpt)
                                 match proxyOpt.Proxy with
                                 | Some proxy ->
@@ -479,6 +484,7 @@ type AgentCliConsole(messageBroker: MessageBroker, agentId: UInt32, networkUtili
                                             Port = Utility.int32Parse(args.[3], 0)
                                             Username = (if args.Length > 4 then args.[4] else String.Empty)
                                             Password = (if args.Length > 5 then args.[5] else String.Empty)
+                                            Type = ProxyType.Socks5.ToString()
                                             Chain = None
                                         }
 
@@ -489,7 +495,8 @@ type AgentCliConsole(messageBroker: MessageBroker, agentId: UInt32, networkUtili
                                                 address, 
                                                 port.ToString(), 
                                                 username, 
-                                                password
+                                                password, 
+                                                ProxyType.Socks5.ToString()
                                             )
                                         messageBroker.Dispatch(this, newProxyMessage)
 

@@ -18,11 +18,31 @@ type AgentSettingsHttpServerResponse() =
     member val StartMarker = String.Empty with get, set
     member val EndMarker = String.Empty with get, set
 
+type ProxyType =
+    | NoProxy
+    | Auto
+    | Http
+    | Socks5
+    with
+        override this.ToString() =
+            match this with
+            | NoProxy -> String.Empty
+            | Auto -> "auto"
+            | Http -> "http"
+            | Socks5 -> "socks5"
+
+        static member Parse(value: String) =
+            if "http".Equals(value, StringComparison.OrdinalIgnoreCase) then ProxyType.Http
+            elif "socks5".Equals(value, StringComparison.OrdinalIgnoreCase) then ProxyType.Socks5
+            elif "auto".Equals(value, StringComparison.OrdinalIgnoreCase) then ProxyType.Auto
+            else ProxyType.NoProxy
+
 type AgentSettingsProxy() =
     member val Ip = String.Empty with get, set
     member val Port = 0 with get, set
     member val Username = String.Empty with get, set
     member val Password = String.Empty with get, set
+    member val Type = ProxyType.Auto with get, set
 
 type AgentSettingsWebServer() =
     member val Address = String.Empty with get, set
@@ -102,6 +122,7 @@ type AgentSettings() =
                 get(jServer, "proxy.port") |> opti(fun v -> settingsWebServer.Proxy.Port <- v.Value<Int32>())
                 get(jServer, "proxy.username") |> opti(fun v -> settingsWebServer.Proxy.Username <- v.Value<String>())
                 get(jServer, "proxy.password") |> opti(fun v -> settingsWebServer.Proxy.Password <- v.Value<String>())
+                get(jServer, "proxy.type") |> opti(fun v -> settingsWebServer.Proxy.Type <- ProxyType.Parse(v.Value<String>()))
                 
                 // parse request
                 get(jServer, "request.session_cookie") |> opti(fun v -> settingsWebServer.Request.SessionCookie <- v.Value<String>())
@@ -178,7 +199,8 @@ type AgentSettings() =
                                                         new JProperty("ip", httpSettings.Proxy.Ip),
                                                         new JProperty("port", httpSettings.Proxy.Port),
                                                         new JProperty("username", httpSettings.Proxy.Username),
-                                                        new JProperty("password", httpSettings.Proxy.Password)
+                                                        new JProperty("password", httpSettings.Proxy.Password),
+                                                        new JProperty("type", httpSettings.Proxy.Type.ToString())
                                                     )
                                                 else
                                                     new JObject()                                                        
@@ -246,7 +268,8 @@ type AgentSettings() =
                                         new JProperty("ip", httpSettings.Proxy.Ip),
                                         new JProperty("port", httpSettings.Proxy.Port),
                                         new JProperty("username", httpSettings.Proxy.Username),
-                                        new JProperty("password", httpSettings.Proxy.Password)
+                                        new JProperty("password", httpSettings.Proxy.Password),
+                                        new JProperty("type", httpSettings.Proxy.Type.ToString())
                                     )
                                 else
                                     new JObject()                                                        

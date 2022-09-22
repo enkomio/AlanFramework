@@ -542,8 +542,9 @@ type AgentSession(rawPrivateKey: Byte array, inputSettings: AgentSettings, messa
                 let port = getDefaultString "port"
                 let username = getDefaultString "username"
                 let password = getDefaultString "password"
+                let proxyType = getDefaultString "type"
 
-                let proxyOpt = new TryGetProxyMessage(address, port.ToString(), username, password)
+                let proxyOpt = new TryGetProxyMessage(address, port.ToString(), username, password, proxyType)
                 messageBroker.DispatchAndWaitHandling(this, proxyOpt)
                 match proxyOpt.Proxy with
                 | None ->
@@ -554,7 +555,8 @@ type AgentSession(rawPrivateKey: Byte array, inputSettings: AgentSettings, messa
                             address, 
                             port, 
                             username, 
-                            password
+                            password,
+                            proxyType
                         )
                     messageBroker.Dispatch(this, newProxyMessage)
                 | Some proxy ->
@@ -564,6 +566,7 @@ type AgentSession(rawPrivateKey: Byte array, inputSettings: AgentSettings, messa
                             Port = Utility.int32Parse(port, 0)
                             Username = username
                             Password = password
+                            Type = proxyType
                         }
                     let updatedProxyMessage = new UpdateProxyMessage(agent.Id, updatedProxy)
                     messageBroker.Dispatch(this, updatedProxyMessage)

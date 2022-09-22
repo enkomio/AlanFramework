@@ -48,12 +48,13 @@ module FrameworkMessages =
         member val DestinationDirectory = destDirectory with get
         member val RootPath = rootPath with get
 
-    type NewProxyMessage(agentId: UInt32, address: String, port: String, username: String, password: String) =
+    type NewProxyMessage(agentId: UInt32, address: String, port: String, username: String, password: String, proxyType: String) =
         member val AgentId = agentId with get
         member val Address = address with get
         member val Port = port with get
         member val Username = username with get
         member val Password = password with get
+        member val Type = proxyType with get, set
         member val CreatedProxyId = String.Empty with get, set
 
     type UseProxyMessage(agentId: UInt32, proxy: Proxy) =
@@ -92,11 +93,12 @@ module FrameworkMessages =
     type GetProxiesMessage() =
         member val Proxies = new List<Proxy>() with get
 
-    type TryGetProxyMessage(address: String, port: String, username: String, password: String) =
+    type TryGetProxyMessage(address: String, port: String, username: String, password: String, proxyType: String) =
         member val Address = address with get, set
         member val Port = port with get, set
         member val Username = username with get, set
         member val Password = password with get, set
+        member val Type = proxyType with get, set
         member val Proxy: Proxy option = None with get, set
 
     type RunMessage

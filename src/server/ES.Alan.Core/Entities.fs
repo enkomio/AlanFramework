@@ -199,6 +199,7 @@ module Entities =
         Port: Int32
         Username: String
         Password: String
+        Type: String
         Chain: Proxy option
     } with
         member this.GetCleanId() =

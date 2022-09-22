@@ -10,6 +10,7 @@ type ProxyDto() =
     member val Port = String.Empty with get, set
     member val Username = String.Empty with get, set
     member val Password  = String.Empty with get, set
+    member val Type = String.Empty with get, set
     member val ChainProxyId = 0u with get, set
 
 type private ProxyRepository() =
@@ -30,6 +31,7 @@ type ProxyStorage(messageBroker: MessageBroker) =
             Port = proxy.Port.ToString(),
             Username = proxy.Username,
             Password = proxy.Password,
+            Type = proxy.Type,
             ChainProxyId = 
                 match proxy.Chain with
                 | Some v -> v.Id
@@ -43,7 +45,8 @@ type ProxyStorage(messageBroker: MessageBroker) =
                 Address = msg.Item.Address,
                 Port = msg.Item.Port.ToString(),
                 Username = msg.Item.Username,
-                Password = msg.Item.Password
+                Password = msg.Item.Password,
+                Type = msg.Item.Type
             )
         msg.Item.CreatedProxyId <- item.Id.ToString()
         _proxyRepository.Upsert(new DbEntity<ProxyDto>(item, Id = item.Id.ToString()))
@@ -68,6 +71,7 @@ type ProxyStorage(messageBroker: MessageBroker) =
         Port = Utility.int32Parse(proxyDto.Port, 0)
         Username = proxyDto.Username |> safeToString
         Password = proxyDto.Password |> safeToString
+        Type = proxyDto.Type |> safeToString
         Chain = tryGetChainProxy(proxyDto)
     }
 
@@ -81,7 +85,8 @@ type ProxyStorage(messageBroker: MessageBroker) =
             proxyDto.Address.Equals(msg.Item.Address, StringComparison.OrdinalIgnoreCase) &&
             proxyDto.Port.Equals(msg.Item.Port, StringComparison.OrdinalIgnoreCase) &&
             proxyDto.Username.Equals(msg.Item.Username, StringComparison.OrdinalIgnoreCase) &&
-            proxyDto.Password.Equals(msg.Item.Password, StringComparison.OrdinalIgnoreCase)
+            proxyDto.Password.Equals(msg.Item.Password, StringComparison.OrdinalIgnoreCase) &&
+            proxyDto.Type.Equals(msg.Item.Type, StringComparison.OrdinalIgnoreCase)
         )
         |> Array.tryHead
         |> function

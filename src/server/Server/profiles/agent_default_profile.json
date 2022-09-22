@@ -23,7 +23,13 @@
 			{
 				"address": "default",
 				"port": 8443,
-				"proxy": {},
+				"proxy": {
+					"ip": "",
+					"port": 0,
+					"username": "",
+					"password": "",
+					"type": "auto"
+				},
 				"request": {
 					"session_cookie": "SSID",
 					"path": "/",
