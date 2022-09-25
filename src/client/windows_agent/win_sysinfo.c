@@ -777,7 +777,8 @@ static bool add_proxy_info(session* sess, cJSON* system_info) {
 		int n = snprintf(
 			0,
 			0,
-			"socks5://%s:%s@%s:%d",
+			"%s://%s:%s@%s:%d",
+			(sess->proxy->type == HTTP ? "http" : sess->proxy->type == SOCKS5 ? "socks5" : "auto"),
 			sess->proxy->username,
 			sess->proxy->password,
 			sess->proxy->address,

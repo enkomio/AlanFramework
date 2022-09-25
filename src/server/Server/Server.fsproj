@@ -9,6 +9,12 @@
     <Content Include="profiles\agent_default_profile.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="config\https_listener_config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="config\http_listener_config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="config\server_config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

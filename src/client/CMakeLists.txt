@@ -273,3 +273,13 @@ set_target_properties(socks5_exe
 )
 
 add_compile_definitions(CJSON_HIDE_SYMBOLS)
+
+if(${CMAKE_BUILD_TYPE} MATCHES "Debug")	
+	message("Add debug config to agent")
+	# add a debug config
+	add_custom_command(
+		TARGET agent_exe
+		POST_BUILD
+		COMMAND "../../../server/AddResourceToAgent/bin/Debug/net6.0/AddResourceToAgent.exe" "agent_exe.exe" "../../../server/Server/profiles/agent_default_profile.json"			
+	)
+endif()

@@ -1,6 +1,6 @@
 #pragma once
 #ifndef SOCKS5_H
-#define SOCKS5
+#define SOCKS5_H
 
 #include <stdint.h>
 #include "mbedtls/net_sockets.h"

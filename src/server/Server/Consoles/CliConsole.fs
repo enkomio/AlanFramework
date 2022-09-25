@@ -67,6 +67,7 @@ type CliConsole(messageBroker: MessageBroker, networkUtility: NetworkUtility, lo
 
     member this.Start() =    
         _consoles.Add(ConsoleType.Dashboard, _console)
+        Console.WriteLine("Type ? for help")
         while not _exitServer do
             _console.PrintCursor()
             let input_command = readText()

@@ -1,5 +1,5 @@
 ﻿{
-	"public_key": "",
+	"public_key": "glVuaZ30LXPYx8io9dwDfhHuGG0OKJXR5FEm7hpv9F4=",
 	"session": {
 		"expire": "2028-01-01 00:00:00",
 		"sleep": 1000,
@@ -19,10 +19,10 @@
 		}
 	},
 	"servers": {
-		"https": [
+		"http": [
 			{
-				"address": "default",
-				"port": 8443,
+				"address": "127.0.0.1",
+				"port": 8080,
 				"proxy": {
 					"ip": "",
 					"port": 0,

@@ -238,12 +238,9 @@ type AgentCliConsole(messageBroker: MessageBroker, agentId: UInt32, networkUtili
 
                 // interact with the proxy
                 if args.[0].Equals("new") then
-                    if args.Length < 3 then
-                        writeLineText("Usage: proxy new <type> [<bind address>] <port> [<username>] [<password>] [<x86|x64>]")
+                    if args.Length < 2 then
+                        writeLineText("Usage: proxy new [<bind address>] <port> [<username>] [<password>] [<x86|x64>]")
                     else
-
-                        // TODO: implement proxy type
-
                         let port =
                             if args.Length = 2 then args.[1] else args.[2]
 
@@ -301,9 +298,9 @@ type AgentCliConsole(messageBroker: MessageBroker, agentId: UInt32, networkUtili
                                 true
                             )
                         messageBroker.Dispatch(this, runMessage)
-                elif args.[0].Equals("use") then
+                elif args.[0].Equals("use", StringComparison.OrdinalIgnoreCase) then
                     if args.Length < 2 then
-                        writeLineText("Usage: proxy use (<proxy Id> | <address> <port> [<username>] [<password>]")
+                        writeLineText("Usage: proxy use (<proxy Id> | [http] <address> <port> [<username>] [<password>] | auto)")
                     else
                         let proxiesMsg = new GetProxiesMessage()
                         messageBroker.DispatchAndWaitHandling(this, proxiesMsg)
@@ -318,6 +315,19 @@ type AgentCliConsole(messageBroker: MessageBroker, agentId: UInt32, networkUtili
                                     let msg = new UseProxyMessage(agentId, proxy)
                                     messageBroker.Dispatch(this, msg)
                         elif args.Length >= 3 then 
+                            // renaming variable since I have to modify it
+                            let mutable args = args
+
+                            let proxyType = 
+                                match ProxyType.Parse(args.[1]) with
+                                | ProxyType.NoProxy -> 
+                                    // no type specified go with default
+                                    ProxyType.Socks5
+                                | v -> 
+                                    // a type was specified, remove the proxy type argument
+                                    args <- Array.removeAt 1 args
+                                    v
+
                             // try to identify the dest proxy
                             let address = args.[1]
                             let port = Utility.int32Parse(args.[2], 0)
@@ -344,7 +354,7 @@ type AgentCliConsole(messageBroker: MessageBroker, agentId: UInt32, networkUtili
                                     )
                                 messageBroker.DispatchAndWaitHandling(this, newProxyMessage)
 
-                                // get again the proxy
+                                // get again the proxy (this time it must be in the list)
                                 let proxyOpt = new TryGetProxyMessage(address, port.ToString(), username, password, ProxyType.Auto.ToString())
                                 messageBroker.DispatchAndWaitHandling(this, proxyOpt)
                                 match proxyOpt.Proxy with

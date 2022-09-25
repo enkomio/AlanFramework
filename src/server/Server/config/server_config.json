@@ -1,16 +1,16 @@
 ﻿{
   "AgentDllX86File": "resources/agent32l.bin",
-  "AgentExeX86File": "resources/agent32.bin",
+  "AgentExeX86File": "../../../../../client/build/x86-Debug/agent_exe.exe",
   "AgentDllX64File": "resources/agent64l.bin",
-  "AgentExeX64File": "resources/agent64.bin",
-  "x86PeLoader": "resources/x86PELoader.bin",
-  "x64PeLoader": "resources/x64PELoader.bin",
+  "AgentExeX64File": "../../../../../client/build/x64-Debug/agent_exe.exe",
+  "x86PeLoader": "../../../../x86PELoader/Debug/x86PELoader.exe",
+  "x64PeLoader": "../../../../x64PELoader/Debug/x64PELoader.exe",
   "DotNetAgentRunnerX86": "resources/DotNetAgentRunnerX86.bin",
   "DotNetAgentRunnerX64": "resources/DotNetAgentRunnerX64.bin",
   "ConsoleInterceptorX86": "resources/interceptorx86.bin",
   "ConsoleInterceptorX64": "resources/interceptorx64.bin",
-  "ExeStagerx86": "resources/stagerx86.bin",
-  "ExeStagerx64": "resources/stagerx64.bin",
+  "ExeStagerx86": "../../../../../client/build/x86-Debug/pe_packer_exe.exe",
+  "ExeStagerx64": "../../../../../client/build/x64-Debug/pe_packer_exe.exe",
   "DllStagerx86": "resources/stagerx86l.bin",
   "DllStagerx64": "resources/stagerx64l.bin",
   "PowerShellTemplateX86": "resources/packaging_powershell_template_x86.ps1",
@@ -19,7 +19,7 @@
   "PowerShellCommandX64": "resources/powershell_command_x64.ps1",
   "JsRunnerX86": "resources/wqjsx86.bin",
   "JsRunnerX64": "resources/wqjsx64.bin",
-  "ProxyX86": "resources/socks5X86.bin",
-  "ProxyX64": "resources/socks5X64.bin"
+  "ProxyX86": "../../../../../client/build/x86-Debug/socks5_exe.exe",
+  "ProxyX64": "../../../../../client/build/x64-Debug/socks5_exe.exe"
 }
 

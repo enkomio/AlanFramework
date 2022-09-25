@@ -8,7 +8,7 @@
 #define DIRECTORY_SEPARATOR '/'
 #endif
 
-#define AGENT_VERSION "7.0"
+#define AGENT_VERSION "8.0"
 
 // Agent errors
 #define ERROR_OK											0x00000000

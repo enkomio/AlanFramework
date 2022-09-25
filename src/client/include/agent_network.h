@@ -7,10 +7,18 @@
 
 #define DEFAULT_TIMEOUT 2000
 
+typedef enum proxy_type proxy_type;
+enum proxy_type {
+	SOCKS5,
+	HTTP,	
+	AUTO
+};
+
 typedef struct proxy_s proxy;
 struct proxy_s {
 	char* address;
 	uint32_t port;
+	proxy_type type;
 	char* username;
 	char* password;
 };

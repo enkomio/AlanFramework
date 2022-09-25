@@ -19,6 +19,7 @@ type AgentConsoleOutput(logProvider: ILogProvider) =
             | None -> String.Empty
 
         let table = new ConsoleTable([|"Name"; "Value"|])
+        table.AddRow([|"Type"; getDefaultString "type"|])
         table.AddRow([|"Address"; getDefaultString "address"|])
         table.AddRow([|"Port"; getDefaultString "port"|])
         table.AddRow([|"Username"; getDefaultString "username"|])

@@ -38,7 +38,7 @@ type ServerSettings() =
         |> Array.iter(fun property ->
             let propertyValue = property.GetValue(settings) :?> String
             if Path.IsPathRooted(propertyValue) |> not then
-                let fullPath = Path.Combine(baseDir, propertyValue)
+                let fullPath = Path.GetFullPath(Path.Combine(baseDir, propertyValue))
                 property.SetValue(settings, fullPath)
         )        
         settings

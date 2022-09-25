@@ -300,9 +300,13 @@ type DashboardCliConsole(messageBroker: MessageBroker, networkUtility: NetworkUt
                 if agentSettings.Servers.Http.Count > 0 then
                     (agentSettings.Servers.Http.[0], ListenerType.Http)
                 else
-                    (agentSettings.Servers.Https.[0], ListenerType.Https)                    
-            createAgentFile("debugAgent.exe", "127.0.0.1", s.Port, s.Request.Path, profileFile, CpuBitness.Bitness32, Packaging.Executable, t)
-            |> ignore
+                    (agentSettings.Servers.Https.[0], ListenerType.Https)       
+            
+            try 
+                // ignore all errors, this is just for debug
+                createAgentFile("debugAgent.exe", "127.0.0.1", s.Port, s.Request.Path, profileFile, CpuBitness.Bitness32, Packaging.Executable, t)
+                |> ignore
+            with _ -> ()
     static member val TestAgentCreated = false with get, set
 #endif
 
