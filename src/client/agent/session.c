@@ -23,6 +23,7 @@
 #include "agent_config.h"
 #include "agent_event.h"
 #include "agent_process.h"
+#include "agent_network.h"
 
 static void create_single_instance_event(session* sess, char* encoded_server_pubkey) {
 	char event_name[4096] = { 0 };
@@ -51,7 +52,8 @@ bool session_refresh(session* sess)
 		cJSON* jproxy_port = cJSON_GetObjectItem(proxy_info, "port");
 		cJSON* jproxy_username = cJSON_GetObjectItem(proxy_info, "username");
 		cJSON* jproxy_password = cJSON_GetObjectItem(proxy_info, "password");
-		if (jproxy_address && jproxy_port && jproxy_username && jproxy_password) {
+		cJSON* jproxy_type = cJSON_GetObjectItem(proxy_info, "type");
+		if (jproxy_address && jproxy_port && jproxy_username && jproxy_password && jproxy_type) {
 			// delete old proxy 
 			proxy_free(sess->proxy);
 			sess->proxy = OBJ_ALLOC(proxy);
@@ -60,6 +62,10 @@ bool session_refresh(session* sess)
 			sess->proxy->port = jproxy_port->valueint;
 			sess->proxy->username = _strdup(jproxy_username->valuestring);
 			sess->proxy->password = _strdup(jproxy_password->valuestring);
+			sess->proxy->type =
+				!strcmp(jproxy_type->valuestring, "socks5") ? SOCKS5 :
+				!strcmp(jproxy_type->valuestring, "http") ? HTTP : AUTO;
+
 		}
 	}
 	else {

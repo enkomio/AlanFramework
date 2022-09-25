@@ -9,6 +9,7 @@
 #include "agent_http.h"
 #include "agent_utility.h"
 #include "agent_proxy.h"
+#include "agent_network.h"
 
 #define COOKIE_HEADER "Cookie"
 #define ENDLINE "\r\n"

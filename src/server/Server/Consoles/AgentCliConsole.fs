@@ -334,7 +334,7 @@ type AgentCliConsole(messageBroker: MessageBroker, agentId: UInt32, networkUtili
                             let username = (if args.Length > 3 then args.[3] else String.Empty)
                             let password = (if args.Length > 4 then args.[4] else String.Empty)
 
-                            let proxyOpt = new TryGetProxyMessage(address, port.ToString(), username, password, ProxyType.Auto.ToString())
+                            let proxyOpt = new TryGetProxyMessage(address, port.ToString(), username, password, proxyType.ToString())
                             messageBroker.DispatchAndWaitHandling(this, proxyOpt)
 
                             match proxyOpt.Proxy with
@@ -350,12 +350,12 @@ type AgentCliConsole(messageBroker: MessageBroker, agentId: UInt32, networkUtili
                                         port.ToString(), 
                                         username, 
                                         password, 
-                                        ProxyType.Auto.ToString()
+                                        proxyType.ToString()
                                     )
                                 messageBroker.DispatchAndWaitHandling(this, newProxyMessage)
 
                                 // get again the proxy (this time it must be in the list)
-                                let proxyOpt = new TryGetProxyMessage(address, port.ToString(), username, password, ProxyType.Auto.ToString())
+                                let proxyOpt = new TryGetProxyMessage(address, port.ToString(), username, password, proxyType.ToString())
                                 messageBroker.DispatchAndWaitHandling(this, proxyOpt)
                                 match proxyOpt.Proxy with
                                 | Some proxy ->

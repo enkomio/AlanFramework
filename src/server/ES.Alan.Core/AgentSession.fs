@@ -587,6 +587,7 @@ type AgentSession(rawPrivateKey: Byte array, inputSettings: AgentSettings, messa
                         Port = message.Item.Proxy.Port
                         Username = message.Item.Proxy.Username
                         Password = message.Item.Proxy.Password
+                        Type = message.Item.Proxy.Type
                     |}
                     |> Utility.jsonSerialize
                     |> Encoding.UTF8.GetBytes

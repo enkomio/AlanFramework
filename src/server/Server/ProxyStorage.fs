@@ -82,11 +82,11 @@ type ProxyStorage(messageBroker: MessageBroker) =
 
     let tryGetProxyMessage(sender: Object, msg: Envelope<TryGetProxyMessage>) =        
         _proxyRepository.Query(fun proxyDto -> 
-            proxyDto.Address.Equals(msg.Item.Address, StringComparison.OrdinalIgnoreCase) &&
-            proxyDto.Port.Equals(msg.Item.Port, StringComparison.OrdinalIgnoreCase) &&
-            proxyDto.Username.Equals(msg.Item.Username, StringComparison.OrdinalIgnoreCase) &&
-            proxyDto.Password.Equals(msg.Item.Password, StringComparison.OrdinalIgnoreCase) &&
-            proxyDto.Type.Equals(msg.Item.Type, StringComparison.OrdinalIgnoreCase)
+            msg.Item.Address.Equals(safeToString proxyDto.Address, StringComparison.OrdinalIgnoreCase) &&
+            msg.Item.Port.Equals(proxyDto.Port, StringComparison.OrdinalIgnoreCase) &&
+            msg.Item.Username.Equals(safeToString proxyDto.Username, StringComparison.OrdinalIgnoreCase) &&
+            msg.Item.Password.Equals(safeToString proxyDto.Password, StringComparison.OrdinalIgnoreCase) &&
+            msg.Item.Type.Equals(safeToString proxyDto.Type, StringComparison.OrdinalIgnoreCase)
         )
         |> Array.tryHead
         |> function
