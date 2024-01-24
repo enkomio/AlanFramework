@@ -35,4 +35,7 @@ proxy* proxy_new(char* address, uint32_t port, char* username, char* password);
 // free the proxy object
 void proxy_free(proxy* p);
 
+// retrieve the system HTTP proxy
+bool proxy_get_system_http_proxy(char** address);
+
 #endif

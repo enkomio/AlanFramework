@@ -8,7 +8,7 @@
 #include "mbedtls/ssl.h"
 #include "agent_http.h"
 #include "agent_utility.h"
-#include "agent_proxy.h"
+#include "agent_socks5.h"
 #include "agent_network.h"
 
 #define COOKIE_HEADER "Cookie"
@@ -281,22 +281,38 @@ http_response* http_send_request(http_request* request, char* address, uint16_t 
 	if (!request_buffer) goto fail;
 
 	mbedtls_net_init(&server_fd);
-	if (proxy) {
-		snprintf(port_str, sizeof(port_str), "%d", proxy->port);
-		if (!proxy_client_connect(
-			&server_fd,
-			proxy->address,
-			port_str,
-			proxy->username,
-			proxy->password
-		)) goto fail;
+	if (proxy) {	
+		if (proxy->type == SOCKS5) {
+			snprintf(port_str, sizeof(port_str), "%d", proxy->port);
+			if (!proxy_client_connect(
+				&server_fd,
+				proxy->address,
+				port_str,
+				proxy->username,
+				proxy->password
+			)) goto fail;
 
-		snprintf(port_str, sizeof(port_str), "%d", port);
-		if (!proxy_client_open(
-			&server_fd,
-			address, 
-			port_str
-		)) goto fail;
+			snprintf(port_str, sizeof(port_str), "%d", port);
+			if (!proxy_client_open(
+				&server_fd,
+				address,
+				port_str
+			)) goto fail;
+		}
+		else if (proxy->type == HTTP) {
+			// TODO implement HTTP proxy
+		}
+		else if (proxy->type == AUTO) {
+			// TODO implement AUTO proxy
+			char* proxy_url = ZERO(char);
+			if (!proxy_get_system_http_proxy(&proxy_url)) goto fail;
+
+		}
+		else {
+			// unrecognized proxy value
+			goto fail;
+		}
+			
 	}
 	else {
 		if (mbedtls_net_connect(&server_fd, address, port_str, MBEDTLS_NET_PROTO_TCP)) goto fail;

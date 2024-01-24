@@ -588,7 +588,7 @@ bool process_is_alive(process_handle* process) {
 	if (!process || !process->handle)
 		return false;
 
-	if (!GetExitCodeProcess(process->handle, &dwExitCode))
+	if (!GetExitCodeProcess((HANDLE)process->handle, &dwExitCode))
 		return false;
 	return dwExitCode == STILL_ACTIVE;
 }
@@ -600,10 +600,10 @@ void process_free(process_handle* process, bool kill_process) {
 			DWORD exitCode = 0;
 			GetExitCodeProcess((HANDLE)process->handle, (LPDWORD)&exitCode);
 			if (exitCode == STILL_ACTIVE) {
-				TerminateProcess(process->handle, 0);
+				TerminateProcess((HANDLE)process->handle, 0);
 			}
 		}		
-		CloseHandle(process->handle);
+		CloseHandle((HANDLE)process->handle);
 		process->handle = 0;
 	}	
 	FREE(process);

@@ -206,7 +206,11 @@ module Entities =
             this.Id.ToString("X").TrimStart([|'0'; 'x'|])
 
         member this.GetFullAddress() =
-            String.Format("socks5://{0}:{1}@{2}:{3}", this.Username, this.Password, this.Address, this.Port)
+            match ProxyType.Parse(this.Type) with
+            | ProxyType.Auto ->
+                String.Format("Auto")
+            | _ ->
+                String.Format("{0}://{1}:{2}@{3}:{4}", this.Type, this.Username, this.Password, this.Address, this.Port)
 
     type Agent = {
         Id: UInt32

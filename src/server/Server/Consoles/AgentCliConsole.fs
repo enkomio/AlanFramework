@@ -306,14 +306,27 @@ type AgentCliConsole(messageBroker: MessageBroker, agentId: UInt32, networkUtili
                         messageBroker.DispatchAndWaitHandling(this, proxiesMsg)
 
                         if args.Length = 2 then
-                            let proxyId = Utility.uint32Parse(args.[1], 0u)
-                            proxiesMsg.Proxies
-                            |> Seq.tryFind(fun p -> p.Id = proxyId)
-                            |> function
-                                | None -> writeLineText(String.Format("Proxy ID {0} not found.", args.[1]))
-                                | Some proxy -> 
-                                    let msg = new UseProxyMessage(agentId, proxy)
-                                    messageBroker.Dispatch(this, msg)
+                            if args.[1].Equals("auto", StringComparison.OrdinalIgnoreCase) then
+                                let autoProxy = {
+                                    Id = 0u
+                                    Address = String.Empty
+                                    Port = 0
+                                    Username = String.Empty
+                                    Password = String.Empty
+                                    Type = "auto"
+                                    Chain = None
+                                }
+                                let msg = new UseProxyMessage(agentId, autoProxy)
+                                messageBroker.Dispatch(this, msg)
+                            else
+                                let proxyId = Utility.uint32Parse(args.[1], 0u)
+                                proxiesMsg.Proxies
+                                |> Seq.tryFind(fun p -> p.Id = proxyId)
+                                |> function
+                                    | None -> writeLineText(String.Format("Proxy ID {0} not found.", args.[1]))
+                                    | Some proxy -> 
+                                        let msg = new UseProxyMessage(agentId, proxy)
+                                        messageBroker.Dispatch(this, msg)
                         elif args.Length >= 3 then 
                             // renaming variable since I have to modify it
                             let mutable args = args

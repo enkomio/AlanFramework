@@ -7,7 +7,7 @@
 #include "agent_thread.h"
 #include "agent_utility.h"
 #include "agent_commands.h"
-#include "agent_proxy.h"
+#include "agent_socks5.h"
 
 #ifdef  _WIN32
 // Winsock2 definition needs to be placed in a specific location, see: https://www.zachburlingame.com/2011/05/resolving-redefinition-errors-betwen-ws2def-h-and-winsock-h/

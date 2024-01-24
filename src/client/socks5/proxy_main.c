@@ -7,7 +7,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "agent_utility.h"
-#include "agent_proxy.h"
+#include "agent_socks5.h"
 
 #include <WS2tcpip.h>
 #include <WinSock2.h>

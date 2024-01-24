@@ -1,3 +1,6 @@
+### 8.0 - XX/YY/2022
+* Supported HTTP proxy and auto proxy (use the default system one)
+
 ### 7.0 - 01/05/2022
 * Implemented `proxy` command for pivoting
 * The `info` and `info++` commands display if the agent is using a proxy

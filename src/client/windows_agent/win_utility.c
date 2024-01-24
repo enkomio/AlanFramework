@@ -11,6 +11,7 @@
 #include <LM.h>
 #include <sysinfoapi.h>
 #include <stringapiset.h>
+#include <wabdefs.h>
 #include "cJSON.h"
 #include "agent_shell.h"
 #include "agent_session.h"

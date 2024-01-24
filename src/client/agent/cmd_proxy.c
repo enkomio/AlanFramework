@@ -6,7 +6,7 @@
 #include "agent_config.h"
 #include "agent_commands.h"
 #include "agent_network.h"
-#include "agent_proxy.h"
+#include "agent_socks5.h"
 #include "agent_named_pipe.h"
 
 command_result* cmd_proxy_info(session* sess, packet* pck)
